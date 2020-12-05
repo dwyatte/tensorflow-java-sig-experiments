@@ -1,11 +1,11 @@
 <project>
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.myorg</groupId>
-    <artifactId>savedmodelpredictor</artifactId>
+    <artifactId>savedmodelpredictorinspectmetagraph</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <exec.mainClass>SavedModelPredictor</exec.mainClass>
+        <exec.mainClass>SavedModelPredictorInspectMetaGraph</exec.mainClass>
     <!-- Minimal version for compiling TensorFlow Java is JDK 8 -->
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
