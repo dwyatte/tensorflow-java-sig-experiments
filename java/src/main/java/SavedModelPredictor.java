@@ -27,9 +27,6 @@ public class SavedModelPredictor {
                                 .feed(stringInputName, stringInputTensor)
                                 .fetch(outputName).run().get(0)
                                 .expect(TFloat32.DTYPE);
-
-        float[][] output = new float[2][1];
-        StdArrays.copyTo(output, outputTensor.data());
-        System.out.println(output[0][0]);
+        System.out.println(outputTensor.data().getFloat(0, 0));
     }
 }
