@@ -46,7 +46,7 @@ public class SavedModelPredictorInspectMetaGraph {
           }
         }
 
-        // get extract the output from the graph
+        // extract the output from the graph
         String outputName = outputsMap.get(outputKey).getName();
         Tensor<TFloat32> outputTensor = runner.fetch(outputName)
                                               .run()
