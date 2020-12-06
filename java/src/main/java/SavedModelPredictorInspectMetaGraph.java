@@ -54,6 +54,8 @@ public class SavedModelPredictorInspectMetaGraph {
                                               .run()
                                               .get(0)
                                               .expect(TFloat32.DTYPE);
+
         System.out.println(outputTensor.data().getFloat(0, 0));
+        System.out.println(outputTensor.data().getFloat(1, 0));
     }
 }

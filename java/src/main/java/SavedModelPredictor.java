@@ -19,8 +19,8 @@ public class SavedModelPredictor {
             {{0.0f}, {1.0f}}
         ));
         Tensor<TString> stringInputTensor = TString.tensorOf(
-          StdArrays.ndCopyOf(new String[]
-            {"a sentence", "b sentence"}
+          StdArrays.ndCopyOf(new String[][]
+            {{"a sentence"}, {"b sentence"}}
         ));
         Tensor<TFloat32> outputTensor = savedModel.session().runner()
                                 .feed(floatInputName, floatInputTensor)
