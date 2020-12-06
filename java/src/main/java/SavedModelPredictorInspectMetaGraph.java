@@ -16,7 +16,7 @@ public class SavedModelPredictorInspectMetaGraph {
     public static final String signatureDefKey = "serving_default";
     public static final Map<String, Object> inputMap = Map.ofEntries(
       Map.entry("float_input", new float[][]{{0.0f}, {1.0f}}),
-      Map.entry("string_input", new String[]{"a sentence", "b sentence"})
+      Map.entry("string_input", new String[][]{{"a sentence"}, {"b sentence"}})
     );
     public static final String outputKey = "output_1";
 
@@ -35,14 +35,16 @@ public class SavedModelPredictorInspectMetaGraph {
           Object inputValue = inputEntry.getValue();
 
           if (inputValue instanceof float[][]) {
-            runner = runner.feed(inputName, TFloat32.tensorOf(
+            Tensor<TFloat32> inputTensor = TFloat32.tensorOf(
               StdArrays.ndCopyOf( (float[][]) inputValue )
-            ));
+            );
+            runner = runner.feed(inputName, inputTensor);
           }
-          else if (inputValue instanceof String[]) {
-            runner = runner.feed(inputName, TString.tensorOf(
-              StdArrays.ndCopyOf( (String[]) inputValue )
-            ));
+          else if (inputValue instanceof String[][]) {
+            Tensor<TString> inputTensor = TString.tensorOf(
+              StdArrays.ndCopyOf( (String[][]) inputValue )
+            );
+            runner = runner.feed(inputName, inputTensor);
           }
         }
 
